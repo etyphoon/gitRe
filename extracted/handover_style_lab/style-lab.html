@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>观澜 · 风格样板间｜同一口缸，六种动漫语言</title>
+<style>
+  :root{
+    --bg:#0a0e0d;
+    --panel:#111817;
+    --panel-2:#0d1312;
+    --line:rgba(255,255,255,.085);
+    --ink:#edf2ee;
+    --dim:#8fa29b;
+    --dim-2:#63736d;
+    --accent:#6fd3b4;
+    --amber:#e8b96a;
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(900px 520px at 12% -8%, rgba(111,211,180,.10), transparent 62%),
+      radial-gradient(760px 460px at 92% 4%, rgba(232,185,106,.07), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    padding:0 0 96px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    max-width:1180px;margin:0 auto;padding:72px 28px 44px;
+  }
+  .eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-size:11px;letter-spacing:.28em;color:var(--accent);
+    text-transform:uppercase;font-weight:600;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(30px,4.4vw,52px);
+    letter-spacing:.02em;line-height:1.22;
+    margin:22px 0 16px;
+  }
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{
+    color:var(--dim);font-size:15px;max-width:660px;
+  }
+  .lede b{color:var(--ink);font-weight:500}
+  .facts{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;
+  }
+  .fact{
+    font-size:12px;color:var(--dim);
+    border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px;background:rgba(255,255,255,.02);
+  }
+  .fact b{color:var(--ink);font-weight:600}
+
+  /* ---------- grid ---------- */
+  main{max-width:1180px;margin:0 auto;padding:0 28px}
+  .grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:34px;
+  }
+  .card{
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    transition:transform .45s cubic-bezier(.2,.7,.3,1),border-color .45s,box-shadow .45s;
+  }
+  .card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(111,211,180,.32);
+    box-shadow:0 26px 60px -30px rgba(0,0,0,.9);
+  }
+  .shot{position:relative;aspect-ratio:3/2;overflow:hidden;background:#000;cursor:zoom-in}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+  .card:hover .shot img{transform:scale(1.028)}
+  .shot::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(0,0,0,.24),transparent 28%,transparent 74%,rgba(0,0,0,.5));
+  }
+  .no{
+    position:absolute;top:14px;left:16px;z-index:2;
+    font-family:var(--serif);font-size:13px;letter-spacing:.16em;
+    color:rgba(255,255,255,.92);
+    background:rgba(8,12,11,.55);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.16);
+    padding:4px 10px;border-radius:6px;
+  }
+  .tag{
+    position:absolute;top:14px;right:14px;z-index:2;
+    font-size:11px;letter-spacing:.06em;
+    padding:5px 11px;border-radius:999px;
+    background:rgba(8,12,11,.62);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.14);color:#e9f5f0;
+  }
+  .tag.hot{color:#0c1513;background:var(--accent);border-color:transparent;font-weight:700}
+
+  .meta{padding:24px 24px 26px}
+  .names{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .meta h2{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:.02em}
+  .en{font-size:10px;letter-spacing:.2em;color:var(--dim-2);text-transform:uppercase;white-space:nowrap}
+  .sig{color:var(--dim);font-size:13.5px;margin-top:10px;min-height:44px}
+  .kw{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .kw span{
+    font-size:11.5px;color:#c9d8d2;
+    border:1px solid var(--line);border-radius:5px;
+    padding:3px 9px;background:rgba(255,255,255,.025);
+  }
+  .swatches{display:flex;align-items:center;gap:7px;margin-top:18px}
+  .swatches i{
+    width:26px;height:26px;border-radius:50%;background:var(--c);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);
+  }
+  .swatches small{margin-left:6px;font-size:10.5px;color:var(--dim-2);letter-spacing:.12em}
+  .fit{
+    margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);
+    font-size:12.5px;color:var(--dim);
+  }
+  .fit b{color:var(--accent);font-weight:600;letter-spacing:.04em}
+
+  /* ---------- cel deep dive ---------- */
+  .cel{max-width:1180px;margin:78px auto 0;padding:0 28px}
+  .cel h3{
+    font-family:var(--serif);font-size:24px;font-weight:600;
+    display:flex;align-items:center;gap:14px;margin-bottom:14px;
+  }
+  .cel h3::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  .cel-lede{color:var(--dim);font-size:14px;max-width:780px;margin-bottom:26px}
+  .cel-lede b{color:var(--ink);font-weight:500}
+  .cel-wrap{display:grid;grid-template-columns:1.55fr 1fr;gap:24px;align-items:start}
+  .cel-main figure,.cel-side figure{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:var(--panel);margin:0;
+  }
+  .cel-main img,.cel-side img{width:100%;display:block;aspect-ratio:3/2;object-fit:cover}
+  .cel-wrap figcaption{
+    padding:12px 16px;font-size:12.5px;color:var(--dim);
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  }
+  .cel-wrap figcaption b{font-family:var(--serif);font-size:15px;color:var(--ink);font-weight:600;white-space:nowrap}
+  .cel-wrap figcaption span{text-align:right}
+  .cel-side{display:flex;flex-direction:column;gap:18px}
+  .cel-list{
+    list-style:none;border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;background:rgba(255,255,255,.02);
+  }
+  .cel-list li{
+    font-size:12.5px;color:var(--dim);padding:7px 0;
+    border-bottom:1px dashed rgba(255,255,255,.06);
+  }
+  .cel-list li:last-child{border-bottom:none}
+  .cel-list b{display:inline-block;width:42px;color:var(--accent);font-weight:600;letter-spacing:.06em}
+
+  /* ---------- verdict ---------- */
+  .verdict{max-width:1180px;margin:72px auto 0;padding:0 28px}
+  .verdict h3{
+    font-family:var(--serif);font-size:24px;font-weight:600;
+    display:flex;align-items:center;gap:14px;margin-bottom:22px;
+  }
+  .verdict h3::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pick{
+    border:1px solid var(--line);border-radius:14px;padding:20px 20px 22px;
+    background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.008));
+  }
+  .pick .k{font-size:10.5px;letter-spacing:.2em;color:var(--dim-2);text-transform:uppercase}
+  .pick .v{font-family:var(--serif);font-size:19px;margin-top:8px;color:var(--ink)}
+  .pick .v span{color:var(--amber)}
+  .pick p{font-size:12.5px;color:var(--dim);margin-top:9px}
+
+  .note{
+    margin-top:34px;border-left:2px solid var(--accent);
+    padding:14px 0 14px 18px;color:var(--dim);font-size:13px;
+  }
+  .note b{color:var(--ink);font-weight:500}
+
+  footer{
+    max-width:1180px;margin:56px auto 0;padding:26px 28px 0;
+    border-top:1px solid var(--line);
+    color:var(--dim-2);font-size:11.5px;letter-spacing:.04em;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+
+  /* ---------- lightbox ---------- */
+  dialog{
+    border:none;background:transparent;padding:0;max-width:min(94vw,1500px);width:100%;
+  }
+  dialog::backdrop{background:rgba(4,7,6,.92);backdrop-filter:blur(8px)}
+  dialog img{width:100%;height:auto;border-radius:10px;display:block;box-shadow:0 40px 100px -30px #000}
+  dialog .cap{
+    display:flex;justify-content:space-between;align-items:center;
+    color:#dfe9e4;font-size:13px;padding:12px 4px 0;letter-spacing:.05em;
+  }
+  dialog .cap b{font-family:var(--serif);font-size:16px;font-weight:600}
+  dialog .cap button{
+    background:none;border:1px solid rgba(255,255,255,.25);color:#dfe9e4;
+    border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:var(--sans);
+  }
+  dialog .cap button:hover{background:rgba(255,255,255,.1)}
+
+  @media(max-width:880px){
+    .grid{grid-template-columns:1fr;gap:26px}
+    .picks{grid-template-columns:1fr}
+    header{padding-top:52px}
+    .sig{min-height:0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">观澜 AquaSim · Style Lab 01</div>
+  <h1>同一口缸，<em>六种动漫语言</em></h1>
+  <p class="lede">
+    同一套场景不变：<b>60×45×45 超白缸 · 荷兰式造景 · 前视固定机位</b>。往下每一张只换画风，不换景——
+    这样你看到的差异，才是"风格"本身的差异，而不是构图碰巧不同。
+  </p>
+  <div class="facts">
+    <span class="fact">构图 <b>前视 · 平视</b></span>
+    <span class="fact">光源 <b>顶部 LED</b></span>
+    <span class="fact">主体 <b>绿毯 + 红绿茎草 + 沉木 + 宝莲灯</b></span>
+    <span class="fact">参考图 <b>AI 生成 · 仅作风格样片</b></span>
+  </div>
+</header>
+
+<main>
+  <div class="grid">
+
+    <!-- 01 Ghibli -->
+    <article class="card">
+      <div class="shot" data-title="① 吉卜力水彩" data-sub="Studio Ghibli Watercolor">
+        <img src="style-lab/01_ghibli.png" alt="吉卜力水彩风格的荷兰景鱼缸" loading="lazy">
+        <span class="no">01</span><span class="tag hot">环境层首选</span>
+      </div>
+      <div class="meta">
+        <div class="names"><h2>吉卜力水彩</h2><span class="en">Studio Ghibli Watercolor</span></div>
+        <p class="sig">水彩与水粉的笔触留在画面上，边缘是柔的，光是暖的。像一本翻旧了的自然绘本——不追求清晰，追求"想住进去"。</p>
+        <div class="kw"><span>水彩笔触</span><span>暖自然光</span><span>低饱和土绿</span><span>边缘柔化</span></div>
+        <div class="swatches">
+          <i style="--c:#8a9a63"></i><i style="--c:#c9b184"></i><i style="--c:#5b6b4c"></i><i style="--c:#e6dcc3"></i>
+          <small>主色板</small>
+        </div>
+        <p class="fit"><b>适配</b>　卡通版的环境与背景层：水草、光束、景深；也适合做新手引导页的底图。</p>
+      </div>
+    </article>
+
+    <!-- 02 Shinkai -->
+    <article class="card">
+      <div class="shot" data-title="② 新海诚光影" data-sub="Makoto Shinkai Light">
+        <img src="style-lab/02_shinkai.png" alt="新海诚光影风格的荷兰景鱼缸" loading="lazy">
+        <span class="no">02</span><span class="tag">宣传物料首选</span>
+      </div>
+      <div class="meta">
+        <div class="names"><h2>新海诚光影</h2><span class="en">Makoto Shinkai Light</span></div>
+        <p class="sig">水中丁达尔光、镜头光晕、玻璃上的高光。青蓝与琥珀对撞，画面自带"这一刻值得被记住"的煽情感。</p>
+        <div class="kw"><span>体积光</span><span>镜头光晕</span><span>青蓝×琥珀</span><span>玻璃高光</span></div>
+        <div class="swatches">
+          <i style="--c:#2e7f8c"></i><i style="--c:#58c7cf"></i><i style="--c:#f2b56b"></i><i style="--c:#0e1b24"></i>
+          <small>主色板</small>
+        </div>
+        <p class="fit"><b>适配</b>　写实版的电影巡航截图、延时摄影片头、商店页首图——负责"第一眼被击中"。</p>
+      </div>
+    </article>
+
+    <!-- 03 KyoAni -->
+    <article class="card">
+      <div class="shot" data-title="③ 京都动画柔光" data-sub="Kyoto Animation Soft">
+        <img src="style-lab/03_kyoani.png" alt="京都动画柔光风格的荷兰景鱼缸" loading="lazy">
+        <span class="no">03</span><span class="tag">图鉴/教学首选</span>
+      </div>
+      <div class="meta">
+        <div class="names"><h2>京都动画柔光</h2><span class="en">Kyoto Animation Soft</span></div>
+        <p class="sig">高调、明亮、粉彩薄荷。没有戏剧性的光，只有"早上八点，屋子刚打扫完"的那种干净。信息密度低，读起来不累。</p>
+        <div class="kw"><span>高调明亮</span><span>粉彩薄荷</span><span>细线</span><span>干净室内</span></div>
+        <div class="swatches">
+          <i style="--c:#cfe6d8"></i><i style="--c:#f3efe2"></i><i style="--c:#9fc9a8"></i><i style="--c:#e8b7a2"></i>
+          <small>主色板</small>
+        </div>
+        <p class="fit"><b>适配</b>　图鉴插画、新手教学、养护提示卡——需要"温柔讲解"而不是"震撼"的地方。</p>
+      </div>
+    </article>
+
+    <!-- 04 Retro -->
+    <article class="card">
+      <div class="shot" data-title="④ 90 年代赛璐璐" data-sub="90s Retro Cel">
+        <img src="style-lab/04_retro90s.png" alt="90 年代赛璐璐风格的荷兰景鱼缸" loading="lazy">
+        <span class="no">04</span><span class="tag">彩蛋首选</span>
+      </div>
+      <div class="meta">
+        <div class="names"><h2>90 年代赛璐璐</h2><span class="en">90s Retro Cel</span></div>
+        <p class="sig">黑描边、平涂硬阴影、略微褪色的胶片色。它不"高级"，但它有记忆点——看一眼就想起小时候守在电视机前。</p>
+        <div class="kw"><span>黑描边</span><span>平涂硬阴影</span><span>褪色胶片</span><span>洋红×青</span></div>
+        <div class="swatches">
+          <i style="--c:#b03a52"></i><i style="--c:#2f6f6a"></i><i style="--c:#d9c27a"></i><i style="--c:#1c2226"></i>
+          <small>主色板</small>
+        </div>
+        <p class="fit"><b>适配</b>　成就解锁、回忆相册、加载页——做成限时彩蛋，不要做主线，否则会显廉价。</p>
+      </div>
+    </article>
+
+    <!-- 05 Chibi -->
+    <article class="card">
+      <div class="shot" data-title="⑤ Q 版萌系" data-sub="Chibi Kawaii">
+        <img src="style-lab/05_chibi.png" alt="Q 版萌系风格的荷兰景鱼缸" loading="lazy">
+        <span class="no">05</span><span class="tag hot">角色层首选</span>
+      </div>
+      <div class="meta">
+        <div class="names"><h2>Q 版萌系</h2><span class="en">Chibi Kawaii</span></div>
+        <p class="sig">圆造型、粗软描边、鱼有大眼睛和马卡龙色。它牺牲了"真"，换来的是"想戳一下"——这正是互动玩法的入口。</p>
+        <div class="kw"><span>圆润造型</span><span>粗软描边</span><span>大眼鱼</span><span>马卡龙色</span></div>
+        <div class="swatches">
+          <i style="--c:#a8e6cf"></i><i style="--c:#ffb7c5"></i><i style="--c:#ffe3a3"></i><i style="--c:#7fd1c1"></i>
+          <small>主色板</small>
+        </div>
+        <p class="fit"><b>适配</b>　卡通版的鱼只角色、喂食互动、帽子商店——所有需要"可爱到想点"的位置。</p>
+      </div>
+    </article>
+
+    <!-- 06 Supernatural -->
+    <article class="card">
+      <div class="shot" data-title="⑥ 温柔奇幻" data-sub="Gentle Supernatural">
+        <img src="style-lab/06_supernatural.png" alt="温柔奇幻风格的荷兰景鱼缸" loading="lazy">
+        <span class="no">06</span><span class="tag">夜间模式首选</span>
+      </div>
+      <div class="meta">
+        <div class="names"><h2>温柔奇幻</h2><span class="en">Gentle Supernatural</span></div>
+        <p class="sig">生物荧光、漂浮光点、幽蓝绿的雾。它把"未知"处理成"有东西在陪着你"，而不是"有东西在暗处"。</p>
+        <div class="kw"><span>生物荧光</span><span>漂浮光点</span><span>幽蓝绿雾</span><span>暗部发光</span></div>
+        <div class="swatches">
+          <i style="--c:#1b4a4f"></i><i style="--c:#3fd0c9"></i><i style="--c:#8ef0d8"></i><i style="--c:#06181c"></i>
+          <small>主色板</small>
+        </div>
+        <p class="fit"><b>适配</b>　夜间模式、传说鱼出场、隐藏事件——稀缺资源，一次只给一个场景用。</p>
+      </div>
+    </article>
+
+  </div>
+
+  <section class="cel">
+    <h3>补一张：赛璐璐本体长什么样</h3>
+    <p class="cel-lede">
+      上面第 ④ 张其实是<b>“90 年代复古赛璐璐”</b>——在赛璐璐底子上又叠了褪色、颗粒和扫描线，所以看起来旧。真正的赛璐璐本体更干净、更硬：
+      它不追求真实，追求<b>一眼可读</b>。左边这张才是原味。
+    </p>
+    <div class="cel-wrap">
+      <figure class="cel-main">
+        <img src="style-lab/07_cel_classic.png" alt="经典赛璐璐风格的荷兰景鱼缸">
+        <figcaption><b>经典赛璐璐</b><span>现代 TV 动画 · 标准赛璐璐</span></figcaption>
+      </figure>
+      <div class="cel-side">
+        <figure>
+          <img src="style-lab/04_retro90s.png" alt="90 年代复古赛璐璐风格的荷兰景鱼缸">
+          <figcaption><b>90s 复古变体</b><span>赛璐璐 + 褪色 + 颗粒</span></figcaption>
+        </figure>
+        <ul class="cel-list">
+          <li><b>线条</b>等宽黑棕描边，闭合、不抖</li>
+          <li><b>阴影</b>每材质只两级：底色 + 一级硬边暗部</li>
+          <li><b>颜色</b>平涂纯色，不渐变、不喷枪</li>
+          <li><b>高光</b>只留明确色块，不做体积光</li>
+          <li><b>质感</b>干净；颗粒与褪色是复古变体另加的</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">
+      <b>一句话记住：</b>赛璐璐是“分色”，不是“混色”。现实中一个物体有无数层灰，赛璐璐只给你两块——亮的一块、暗的一块，边界是刀切的。
+      也正因为它把画面压成有限色块，所以在大屏幕上极其清晰、制作也快，这正是当年 TV 动画不得不选它的原因。
+    </p>
+  </section>
+
+  <section class="verdict">
+    <h3>如果只能选，怎么配</h3>
+    <div class="picks">
+      <div class="pick">
+        <div class="k">Toon Version</div>
+        <div class="v">① 吉卜力水彩 <span>×</span> ⑤ Q 版</div>
+        <p>环境交给水彩（柔和、有呼吸感），角色交给 Q 版（可爱、可互动）。一个负责"想待着"，一个负责"想戳"。</p>
+      </div>
+      <div class="pick">
+        <div class="k">Real Version</div>
+        <div class="v">② 新海诚光影</div>
+        <p>只用在对外物料：宣传片、商店页、延时摄影片头。游戏内长时间看会疲劳，别做常驻。</p>
+      </div>
+      <div class="pick">
+        <div class="k">Special</div>
+        <div class="v">④ 赛璐璐 <span>+</span> ⑥ 温柔奇幻</div>
+        <p>前者做成就/回忆彩蛋，后者做夜间与传说事件。都属于"低频高感知"，用多了就贬值。</p>
+      </div>
+    </div>
+
+    <p class="note">
+      <b>一句话结论：</b>①和⑤是主风格，②是门面，③是说明书，④和⑥是彩蛋。
+      真正要落到代码里的，其实只有两套参数——<b>水彩笔触的柔边 + Q 版的粗描边</b>；
+      其余四条线都可以用同一套渲染管线换色板和后期强度做出来。
+    </p>
+  </section>
+</main>
+
+<footer>
+  <span>观澜 AquaSim · 风格样板间 v1 · 2026-10-26</span>
+  <span>6 张参考图由 AI 生成，仅用于风格定调；正式美术需按此重绘</span>
+</footer>
+
+<dialog id="lb">
+  <img id="lbImg" alt="">
+  <div class="cap"><span><b id="lbTitle"></b>　<span id="lbSub"></span></span><button id="lbClose">关闭 ESC</button></div>
+</dialog>
+
+<script>
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbSub = document.getElementById('lbSub');
+
+  document.querySelectorAll('.shot').forEach(shot => {
+    shot.addEventListener('click', () => {
+      const img = shot.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbTitle.textContent = shot.dataset.title;
+      lbSub.textContent = shot.dataset.sub;
+      lb.showModal();
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', e => {
+    const r = lb.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) lb.close();
+  });
+
+  window.__STYLELAB = {
+    get count() { return document.querySelectorAll('.card').length; },
+    get styles() { return [...document.querySelectorAll('.meta h2')].map(h => h.textContent); },
+    get images() {
+      return [...document.querySelectorAll('.shot img')].map(i => ({
+        src: i.getAttribute('src'),
+        w: i.naturalWidth,
+        h: i.naturalHeight,
+        ok: i.complete && i.naturalWidth > 0
+      }));
+    }
+  };
+</script>
+</body>
+</html>
