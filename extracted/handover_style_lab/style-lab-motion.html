@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>观澜 · 动图展厅｜同一口缸，七种动法</title>
+<style>
+  :root{
+    --bg:#080b0a;
+    --panel:#101716;
+    --line:rgba(255,255,255,.085);
+    --ink:#edf2ee;
+    --dim:#8fa29b;
+    --dim-2:#63736d;
+    --accent:#6fd3b4;
+    --amber:#e8b96a;
+    --violet:#9b8cff;
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(900px 520px at 10% -8%, rgba(111,211,180,.10), transparent 62%),
+      radial-gradient(800px 480px at 94% 2%, rgba(155,140,255,.07), transparent 60%),
+      var(--bg);
+    color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+    padding-bottom:96px;
+  }
+
+  header{max-width:1180px;margin:0 auto;padding:72px 28px 34px}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;font-weight:600}
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,52px);letter-spacing:.02em;line-height:1.22;margin:22px 0 16px}
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{color:var(--dim);font-size:15px;max-width:700px}
+  .lede b{color:var(--ink);font-weight:500}
+
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .lg{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 16px;background:rgba(255,255,255,.022);font-size:12.5px;color:var(--dim)}
+  .lg b{color:var(--ink);font-weight:600}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  .dot.flat{background:var(--violet);box-shadow:0 0 12px var(--violet)}
+
+  .bar{max-width:1180px;margin:10px auto 0;padding:0 28px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .bar-note{font-size:11.5px;color:var(--dim-2);letter-spacing:.06em}
+  .toggle{
+    background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink);
+    font-family:var(--sans);font-size:12px;letter-spacing:.08em;
+    padding:8px 16px;border-radius:999px;cursor:pointer;transition:.25s;
+  }
+  .toggle:hover{background:rgba(111,211,180,.14);border-color:rgba(111,211,180,.4)}
+
+  main{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  .sec{margin-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-head h2{font-family:var(--serif);font-size:26px;font-weight:600}
+  .sec-head span{font-size:11px;letter-spacing:.22em;color:var(--dim-2);text-transform:uppercase}
+  .sec-desc{color:var(--dim);font-size:13px;margin-bottom:24px;max-width:720px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+  .clip{
+    background:linear-gradient(180deg,var(--panel),#0b1110);
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    transition:border-color .4s,transform .4s;
+  }
+  .clip:hover{border-color:rgba(111,211,180,.3);transform:translateY(-4px)}
+  .frame{position:relative;aspect-ratio:3/2;background:#000}
+  .frame video{width:100%;height:100%;object-fit:cover;display:block}
+  .frame::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 26%,transparent 78%,rgba(0,0,0,.42));
+  }
+  .no{
+    position:absolute;top:14px;left:16px;z-index:2;
+    font-family:var(--serif);font-size:13px;letter-spacing:.16em;color:#fff;
+    background:rgba(8,12,11,.55);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.16);padding:4px 10px;border-radius:6px;
+  }
+  .kind{
+    position:absolute;top:14px;right:14px;z-index:2;
+    font-size:10.5px;letter-spacing:.14em;font-weight:700;
+    padding:5px 11px;border-radius:999px;
+  }
+  .kind.d3{background:var(--accent);color:#08110e}
+  .kind.d2{background:rgba(155,140,255,.92);color:#0b0918}
+  .meta{padding:20px 22px 24px}
+  .names{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .meta h3{font-family:var(--serif);font-size:21px;font-weight:600}
+  .len{font-size:10.5px;letter-spacing:.16em;color:var(--dim-2)}
+  .motion{color:var(--dim);font-size:13px;margin-top:10px}
+  .motion b{color:var(--ink);font-weight:500}
+
+  /* 填空说明卡 */
+  .clip.ghost{
+    background:linear-gradient(180deg,rgba(255,255,255,.032),rgba(255,255,255,.008));
+    border-style:dashed;padding:34px 30px;display:flex;align-items:center;
+  }
+  .clip.ghost:hover{transform:none;border-color:rgba(255,255,255,.085)}
+  .gk{font-size:10.5px;letter-spacing:.26em;color:var(--accent)}
+  .clip.ghost h3{font-family:var(--serif);font-size:22px;font-weight:600;margin:12px 0 18px}
+  .clip.ghost ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .clip.ghost li{font-size:13px;color:var(--dim);padding-left:17px;position:relative;line-height:1.65}
+  .clip.ghost li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.75;
+  }
+
+  .note{
+    max-width:1180px;margin:44px auto 0;padding:0 28px;
+  }
+  .note .box{
+    border-left:2px solid var(--accent);padding:14px 0 14px 18px;
+    color:var(--dim);font-size:13px;max-width:820px;
+  }
+  .note b{color:var(--ink);font-weight:500}
+
+  footer{
+    max-width:1180px;margin:56px auto 0;padding:26px 28px 0;
+    border-top:1px solid var(--line);
+    color:var(--dim-2);font-size:11.5px;letter-spacing:.04em;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+
+  @media(max-width:880px){
+    .grid{grid-template-columns:1fr;gap:24px}
+    header{padding-top:52px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">观澜 AquaSim · Motion Lab 01</div>
+  <h1>同一口缸，<em>七种动法</em></h1>
+  <p class="lede">
+    七张静态样片，各做了 5 秒循环。但动法不一样：<b>该有体积的给 3D 推镜与视差，该平的就把机位钉死</b>——
+    赛璐璐如果加了纵深，反而就不是赛璐璐了。
+  </p>
+  <div class="legend">
+    <span class="lg"><i class="dot"></i><b>3D 纵深</b>　慢推镜头 + 前后景视差 + 鱼穿层</span>
+    <span class="lg"><i class="dot flat"></i><b>2D 平面</b>　机位锁死 + 有限动画 + 无景深</span>
+  </div>
+</header>
+
+<div class="bar"><span class="bar-note">自动播放 · 无声 · 仅视口内播放，避免七条同时解码</span><button class="toggle" id="toggle">全部暂停</button></div>
+
+<main>
+  <section class="sec">
+    <div class="sec-head"><h2>3D 纵深派</h2><span>Parallax / Dolly-in</span></div>
+    <p class="sec-desc">镜头是“穿进水里”的，不是“贴着玻璃看”。前景草、中景鱼、后景草按不同速度移动，眼睛才会相信这是一缸有厚度的水。</p>
+    <div class="grid">
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/01_ghibli.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">01</span><span class="kind d3">3D 纵深</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>吉卜力水彩</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　0.9× 慢推；水彩笔触不抖，只有水在动；前景草摆幅大于后景草。</p>
+        </div>
+      </article>
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/02_shinkai.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">02</span><span class="kind d3">3D 纵深</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>新海诚光影</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　体积光横向扫过水体；鱼分三层游，视差最强；玻璃高光缓慢游走。</p>
+        </div>
+      </article>
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/03_kyoani.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">03</span><span class="kind d3">3D 纵深</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>京都动画柔光</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　几乎察觉不到的推镜与晨光位移；运动量刻意压到最低，靠“安静”本身成立。</p>
+        </div>
+      </article>
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/05_chibi.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">05</span><span class="kind d3">3D 纵深</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>Q 版萌系</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　像凑近看一个手工模型；胖鱼上下浮动、气泡成串，浅景深把“玩具感”放大。</p>
+        </div>
+      </article>
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/06_supernatural.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">06</span><span class="kind d3">3D 纵深</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>温柔奇幻</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　光点分布在多个深度层，推镜时逐层错开；荧光呼吸不均匀，才像活的。</p>
+        </div>
+      </article>
+
+      <article class="clip ghost">
+        <div>
+          <span class="gk">WHY 3D</span>
+          <h3>为什么这五条要加纵深</h3>
+          <ul>
+            <li>水是有厚度的介质。压成平面，缸就变成一张壁纸。</li>
+            <li>前景草、中景鱼、后景草按不同速度移动，眼睛才相信有体积。</li>
+            <li>慢推 ≈ 观众自己往前凑，是注意力最自然的动作。</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>2D 平面派</h2><span>Locked-off / Limited Animation</span></div>
+    <p class="sec-desc">机位一动不动，只让画里的东西动。这是当年 TV 动画的真实做法——不是技术不够，是“平”本身就是这套语言的一部分。</p>
+    <div class="grid">
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/04_retro90s.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">04</span><span class="kind d2">2D 平面</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>90s 复古赛璐璐</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　一拍二有限动画；鱼走横向循环，水草几乎不动；颗粒与扫描线全程锁定。</p>
+        </div>
+      </article>
+
+      <article class="clip">
+        <div class="frame">
+          <video src="style-lab/motion/07_cel_classic.mp4" muted loop playsinline preload="metadata"></video>
+          <span class="no">07</span><span class="kind d2">2D 平面</span>
+        </div>
+        <div class="meta">
+          <div class="names"><h3>经典赛璐璐</h3><span class="len">5 SEC LOOP</span></div>
+          <p class="motion"><b>动法</b>　零推镜、零景深；描边与两级硬阴影全部钉死，只有鱼和气泡在动。</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="note">
+    <p class="box">
+      <b>为什么赛璐璐不能加 3D：</b>赛璐璐的清晰感来自“色块边界是刀切的”。一旦加景深模糊、加体积光、加镜头视差，
+      边界就被软化，画面立刻变成“伪 3D 渲染”，两头不靠。要做赛璐璐，就得接受它是一张会动的画，而不是一个会动的空间。
+    </p>
+  </div>
+</main>
+
+<footer>
+  <span>观澜 AquaSim · 动图展厅 v1 · 2026-10-26</span>
+  <span>7 条 5 秒循环 · 无音轨 · AI 生成样片，仅用于风格定调</span>
+</footer>
+
+<script>
+  const videos = [...document.querySelectorAll('.frame video')];
+  const toggle = document.getElementById('toggle');
+  let allPlaying = true;
+
+  // 只让进入视口的片子播放，避免 7 条同时解码
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { if (allPlaying) v.play().catch(() => {}); }
+      else v.pause();
+    });
+  }, { threshold: 0.45 });
+  videos.forEach(v => io.observe(v));
+
+  toggle.addEventListener('click', () => {
+    allPlaying = !allPlaying;
+    videos.forEach(v => allPlaying ? v.play().catch(() => {}) : v.pause());
+    toggle.textContent = allPlaying ? '全部暂停' : '全部播放';
+  });
+
+  // 视频元数据到位后再允许播放，避免首帧黑屏
+  videos.forEach(v => {
+    v.addEventListener('loadeddata', () => v.classList.add('ready'), { once: true });
+  });
+
+  window.__MOTIONLAB = {
+    get count() { return videos.length; },
+    get ready() {
+      return videos.map(v => ({
+        src: v.getAttribute('src'),
+        w: v.videoWidth,
+        h: v.videoHeight,
+        dur: Math.round((v.duration || 0) * 10) / 10,
+        paused: v.paused
+      }));
+    }
+  };
+</script>
+</body>
+</html>

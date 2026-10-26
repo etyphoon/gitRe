@@ -1,0 +1,114 @@
+{
+  "package": "观澜 AquaSim · 动漫风格探索交接包（Style Lab）",
+  "created": "2026-10-26",
+  "format": "静态 HTML + PNG + MP4，无构建步骤",
+  "total_files": 21,
+  "total_bytes": 58062473,
+  "files": [
+    {
+      "path": "HANDOVER.md",
+      "bytes": 12780,
+      "sha256": "fe1c9ae9bad000c0389133d7f85e55c3fb354a19ccd7a27a3c1f72cf479ca734"
+    },
+    {
+      "path": "PROMPTS.md",
+      "bytes": 11296,
+      "sha256": "842306780bca0510ff2cf3ca934d0add50ecbbeaa7dc7404eadfcda78a3e6288"
+    },
+    {
+      "path": "style-lab-motion.html",
+      "bytes": 13658,
+      "sha256": "7140353185454374d53864d19059f239a7b9230aa7f21bdcd7f9bf0e2db402fb"
+    },
+    {
+      "path": "style-lab-sheet.png",
+      "bytes": 3821615,
+      "sha256": "fdf2c8312b46a9f2ff9efe01e8eba4471bfecc86d8a090049af55ab31b083f7b"
+    },
+    {
+      "path": "style-lab.html",
+      "bytes": 20991,
+      "sha256": "cdbafe4e7f9efef13ad04a872d0bfa04bf5c60d74f7737bd04c3a97665395073"
+    },
+    {
+      "path": "style-lab/01_ghibli.png",
+      "bytes": 2839939,
+      "sha256": "9de045afc7a22c79eadd26dcf69e22f34f79dde200041dea05376f7149d777f2"
+    },
+    {
+      "path": "style-lab/02_shinkai.png",
+      "bytes": 2569307,
+      "sha256": "0cddd97a47fac8aca9ee294359c2af03e7a5fb121d5ad8732194f7cc953d38fe"
+    },
+    {
+      "path": "style-lab/03_kyoani.png",
+      "bytes": 2642753,
+      "sha256": "dea7f2c7e65e75bec125bcc452ad7dd006c4c3ef8c90038e6c6af9661e65c1f5"
+    },
+    {
+      "path": "style-lab/04_retro90s.png",
+      "bytes": 2762861,
+      "sha256": "1a024ddc5bf2b5614ffcc305eec61a18b80c9f21b42537703076a24caeefc2da"
+    },
+    {
+      "path": "style-lab/05_chibi.png",
+      "bytes": 2388075,
+      "sha256": "17c0851dd7d6e107595eedac8ce48b2f65dfd6ba1a1be4f9dce8232ce78dfbd2"
+    },
+    {
+      "path": "style-lab/06_supernatural.png",
+      "bytes": 2355259,
+      "sha256": "79dd299823350e1013e9b5fa1b4262befd9ab21df221ce70ecc817530fb8a241"
+    },
+    {
+      "path": "style-lab/07_cel_classic.png",
+      "bytes": 2619773,
+      "sha256": "d0fc335b5a1217434368ad5b85862b8ba43cfa7255201b310a38c205b6d5e632"
+    },
+    {
+      "path": "style-lab/motion/01_ghibli.mp4",
+      "bytes": 5147833,
+      "sha256": "a7301ccb0e5bb556838a684478fbf6862d65770f1f2b234f7e7d8fac1e701bb4"
+    },
+    {
+      "path": "style-lab/motion/02_shinkai.mp4",
+      "bytes": 5900055,
+      "sha256": "226700b00cfcc8eb4d735afb5bfd32fd65016802b7f7319b1f8a4745f05c8e73"
+    },
+    {
+      "path": "style-lab/motion/03_kyoani.mp4",
+      "bytes": 4887346,
+      "sha256": "fc8041e2c2a6bc0892414a584baa04c5f627d6ab625f4615dca93c8f7a5a4fd9"
+    },
+    {
+      "path": "style-lab/motion/04_retro90s.mp4",
+      "bytes": 4559721,
+      "sha256": "6873ed6687757432a7e4d4baf5a841f80a1579644bd8def75a580431efb9ae31"
+    },
+    {
+      "path": "style-lab/motion/05_chibi.mp4",
+      "bytes": 5770307,
+      "sha256": "59547d15d86153e239d1ed55e23c4111d458fad2e9fd1aa39cc5f95b19c90569"
+    },
+    {
+      "path": "style-lab/motion/06_supernatural.mp4",
+      "bytes": 4913847,
+      "sha256": "a8f7acf11d2395835e98ea26de166f352283edc39390b11abd0c58f407319333"
+    },
+    {
+      "path": "style-lab/motion/07_cel_classic.mp4",
+      "bytes": 4817215,
+      "sha256": "568e05fb094f541b4053bc15ddce37fcf04d13d6622f16e7f620b99cfe0732ee"
+    },
+    {
+      "path": "tools/run_verify.sh",
+      "bytes": 759,
+      "sha256": "6547cef2b0e89279fb9d2c1d1f409bc5a056d6de79e4ff6233d809b6fb744eb9"
+    },
+    {
+      "path": "tools/verify.cjs",
+      "bytes": 7083,
+      "sha256": "bea2dc6d4ba1d76ebab34fb7bce0877efbc34557caefe68ef142dc16f74d62ea"
+    }
+  ]
+}
